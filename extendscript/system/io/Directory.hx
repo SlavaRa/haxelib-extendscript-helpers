@@ -1,5 +1,5 @@
-package extendscript.sys.io;
-import sys.io.SearchOption;
+package extendscript.system.io;
+import system.io.SearchOption;
 using Lambda;
 using StringTools;
 using haxe.io.Path;
