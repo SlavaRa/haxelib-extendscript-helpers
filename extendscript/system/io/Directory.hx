@@ -13,7 +13,7 @@ class Directory {
 	 * @param searchOption One of the enumeration values that specifies whether the search operation should include all subdirectories or only the current directory.
 	 * @return An array of the full names (including paths) of the subdirectories that match the specified criteria, or an empty array if no directories are found.
 	 */
-	public static inline function getFiles(path:String, searchPattern:String, searchOption:SearchOption):Array<String> {
+	public static inline function getFiles(path:String, searchPattern:String, searchOption:SearchOption):Array<File> {
 		return _getFiles(path.addTrailingSlash(), searchPattern, searchOption, []);
 	}
 	
@@ -26,7 +26,7 @@ class Directory {
 		if(option == SearchOption.AllDirectories) {
 			for(it in new Folder(path.addTrailingSlash()).getFiles()) {
 				if(new Folder(it.fullName).exists) {
-					result = result.concat(getFiles(it.fullName, pattern, option, []));
+					result = result.concat(_getFiles(it.fullName, pattern, option, []));
 				}
 			}
 		}
